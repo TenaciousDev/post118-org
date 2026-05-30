@@ -79,7 +79,7 @@ export default function Contact() {
             <div className="rounded border border-gray-200 shadow-sm overflow-hidden">
               <iframe
                 title="Post 118 location map"
-                src="https://maps.google.com/maps?q=846+S+SR-39+Danville+IN+46122&output=embed&z=15"
+                src="https://maps.google.com/maps?q=846+IN-39+Danville+IN+46122&output=embed&z=15"
                 width="100%"
                 height="280"
                 loading="lazy"
