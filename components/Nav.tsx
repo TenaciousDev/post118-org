@@ -28,8 +28,8 @@ export default function Nav() {
         <Image
           src="/images/logo.png"
           alt="American Legion Post 118"
+          width={124}
           height={40}
-          width={40}
           className="object-contain"
         />
         <div className="leading-tight">
