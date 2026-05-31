@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { imgPath } from "@/lib/asset";
+import { assetPath } from "@/lib/assetPath";
 
 /* ── Types ───────────────────────────────────────────────────────── */
 
@@ -164,7 +164,7 @@ function ExpandedCard({ org, onBack }: { org: Org; onBack: () => void }) {
         {/* Navy header */}
         <div className="bg-legion-navy px-6 py-5 flex items-center gap-5">
           <div className={`w-28 h-16 shrink-0 rounded overflow-hidden flex items-center justify-center ${org.darkBg ? "" : "bg-white p-1"}`}>
-            <img src={imgPath(org.logo)} alt={org.name} className="object-contain max-h-full max-w-full" />
+            <img src={assetPath(org.logo)} alt={org.name} className="object-contain max-h-full max-w-full" />
           </div>
           <div>
             <p className="text-legion-red text-xs font-semibold uppercase tracking-widest mb-0.5">
@@ -254,7 +254,7 @@ export default function MembershipCards() {
         >
           {/* Logo area */}
           <div className={`h-24 flex items-center justify-center ${o.darkBg ? "bg-legion-navy" : "bg-gray-50"}`}>
-            <img src={imgPath(o.logo)} alt={o.name} className="object-contain max-h-full max-w-full p-4" />
+            <img src={assetPath(o.logo)} alt={o.name} className="object-contain max-h-full max-w-full p-4" />
           </div>
 
           {/* Body */}
