@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { imgPath } from "@/lib/asset";
 
 const stripe =
   "repeating-linear-gradient(90deg, #E31937 0px, #E31937 12px, #ffffff 12px, #ffffff 24px)";
@@ -79,13 +79,10 @@ export default function Home() {
     <>
       {/* ── Logo band ────────────────────────────────────── */}
       <section className="bg-legion-navy flex justify-center pt-10 pb-3">
-        <Image
-          src="/images/logo.png"
+        <img
+          src={imgPath("/images/logo.png")}
           alt="American Legion Post 118"
-          width={600}
-          height={195}
           className="w-1/2 min-w-[240px] max-w-[560px] object-contain"
-          priority
         />
       </section>
 
@@ -168,11 +165,9 @@ export default function Home() {
                 className="group relative overflow-hidden rounded transition-opacity duration-200"
               >
                 <div className={`flex items-center justify-center ${pad} h-40`}>
-                  <Image
-                    src={logo}
+                  <img
+                    src={imgPath(logo)}
                     alt={name}
-                    width={200}
-                    height={80}
                     className="object-contain max-h-full w-full"
                   />
                 </div>
