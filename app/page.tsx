@@ -146,6 +146,27 @@ export default function Home() {
         <p className="relative text-legion-mist text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
       </section>
 
+      {/* ── Who We Are ───────────────────────────────────── */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-legion-navy text-center mb-12">
+            Who We Are.
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[...Array(6)].map((_, i) => (
+              <div
+                key={i}
+                className="border-t-4 border-legion-navy bg-gray-50 rounded-b p-6 flex flex-col gap-3"
+              >
+                <h3 className="font-semibold text-legion-navy text-lg">Coming Soon</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Content for this card is coming soon.</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Programs ─────────────────────────────────────── */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-5xl mx-auto">
