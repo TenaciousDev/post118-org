@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-legion-blue: #003DA5;
-  --color-legion-red: #E31937;
+  --color-legion-blue: #1B3D6D;
+  --color-legion-red: #D72131;
   --color-legion-navy: #0a1628;
   --color-legion-navy-deep: #050d18;
   --color-legion-white: #F5F5F0;
