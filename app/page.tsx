@@ -68,10 +68,10 @@ const programs = [
 ];
 
 const entities = [
-  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png" },
-  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png" },
-  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png" },
-  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png" },
+  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png", pad: "p-8" },
+  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png", pad: "p-3" },
+  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png", pad: "p-3" },
+  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png", pad: "p-8" },
 ];
 
 export default function Home() {
@@ -161,13 +161,13 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {entities.map(({ href, name, logo }) => (
+            {entities.map(({ href, name, logo, pad }) => (
               <Link
                 key={href}
                 href={href}
                 className="group relative overflow-hidden rounded transition-opacity duration-200"
               >
-                <div className="flex items-center justify-center p-8 h-40">
+                <div className={`flex items-center justify-center ${pad} h-40`}>
                   <Image
                     src={logo}
                     alt={name}
