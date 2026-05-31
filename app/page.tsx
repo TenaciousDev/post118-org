@@ -149,11 +149,8 @@ export default function Home() {
       {/* ── Programs ─────────────────────────────────────── */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-2 text-center">
-            What We Do
-          </p>
           <h2 className="text-3xl font-bold text-legion-navy text-center mb-12">
-            Programs &amp; Initiatives
+            What We Do.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
