@@ -93,10 +93,10 @@ export default function Home() {
           <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-4">
             Hendricks County · Danville, Indiana
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-legion-white leading-tight mb-6">
             Serving Veterans,<br />Strengthening Community
           </h1>
-          <p className="text-legion-blue text-lg max-w-2xl mx-auto mb-10">
+          <p className="text-legion-mist text-lg max-w-2xl mx-auto mb-10">
             American Legion Post 118 has proudly served Danville and Hendricks County
             since our founding — supporting veterans, families, and neighbors through
             programs, camaraderie, and community action.
@@ -120,15 +120,16 @@ export default function Home() {
           {/* Stat badges */}
           <div className="flex flex-wrap justify-center gap-6">
             {[
-              "100+ Active Members",
-              "Post 118 Est. · Danville IN",
-              "$10K+ Scholarships Awarded",
-            ].map((stat) => (
+              { value: "100+", label: "Active Members" },
+              { value: "Post 118", label: "Est. · Danville IN" },
+              { value: "$10K+", label: "Scholarships Awarded" },
+            ].map(({ value, label }) => (
               <div
-                key={stat}
-                className="border border-white/20 rounded-full px-5 py-2 text-white/70 text-sm"
+                key={label}
+                className="border border-white/20 rounded-full px-5 py-2 text-sm"
               >
-                {stat}
+                <span className="text-legion-white">{value}</span>{" "}
+                <span className="text-legion-mist">{label}</span>
               </div>
             ))}
           </div>
@@ -145,10 +146,10 @@ export default function Home() {
             <span key={i} className="absolute text-white text-xl" style={{ left: `${i * 22 + 5}%`, top: "50%", transform: "translateY(-50%)" }}>{s}</span>
           ))}
         </div>
-        <p className="relative text-white text-lg sm:text-xl italic font-medium max-w-3xl mx-auto">
+        <p className="relative text-legion-white text-lg sm:text-xl italic font-medium max-w-3xl mx-auto">
           &ldquo;For God and Country, we associate ourselves together for the following purposes: To uphold and defend the Constitution of the United States; to maintain law and order; to foster and perpetuate a one hundred percent Americanism.&rdquo;
         </p>
-        <p className="relative text-white/70 text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
+        <p className="relative text-legion-mist text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
       </section>
 
       {/* ── Programs ─────────────────────────────────────── */}
@@ -188,10 +189,10 @@ export default function Home() {
       {/* ── Membership CTA ───────────────────────────────── */}
       <section className="bg-legion-navy py-20 px-6 relative overflow-hidden">
         <div className="relative max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-legion-white mb-4">
             Ready to Join Post 118?
           </h2>
-          <p className="text-white/60 text-lg mb-10">
+          <p className="text-legion-mist text-lg mb-10">
             Membership is open to veterans, active duty service members, and their
             families. Join a community that honors service and gives back.
           </p>

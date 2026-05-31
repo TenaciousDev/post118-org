@@ -14,10 +14,10 @@ export default function Footer() {
   return (
     <footer className="bg-legion-navy-deep px-6 py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
       <div>
-        <div className="text-legion-blue font-semibold">
+        <div className="text-legion-white font-semibold">
           American Legion Post 118
         </div>
-        <div className="text-white/40 text-sm mt-1">
+        <div className="text-legion-mist text-sm mt-1">
           846 S SR-39 · Danville, IN 46122 · (317) 745-4736
         </div>
       </div>
@@ -26,7 +26,7 @@ export default function Footer() {
           <Link
             key={href}
             href={href}
-            className="text-white/50 hover:text-white text-sm transition-colors"
+            className="text-legion-mist hover:text-legion-white text-sm transition-colors"
           >
             {label}
           </Link>

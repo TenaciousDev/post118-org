@@ -56,8 +56,8 @@ export default function Nav() {
           className="object-contain"
         />
         <div className="leading-tight">
-          <div className="text-white font-semibold text-sm">American Legion</div>
-          <div className="text-white/50 text-xs">Post 118 · Danville, IN</div>
+          <div className="text-legion-white font-semibold text-sm">American Legion</div>
+          <div className="text-legion-mist text-xs">Post 118 · Danville, IN</div>
         </div>
       </Link>
 
@@ -68,8 +68,8 @@ export default function Nav() {
             href={href}
             className={`px-3 py-1 text-sm transition-colors ${
               isActive(pathname, href)
-                ? "text-white border-b-2 border-legion-red"
-                : "text-white/70 hover:text-white"
+                ? "text-legion-white border-b-2 border-legion-red"
+                : "text-legion-mist hover:text-legion-white"
             }`}
           >
             {label}
@@ -87,8 +87,8 @@ export default function Nav() {
             onClick={() => setContactOpen((o) => !o)}
             className={`flex items-center gap-1 px-3 py-1 text-sm transition-colors ${
               isActive(pathname, "/contact")
-                ? "text-white border-b-2 border-legion-red"
-                : "text-white/70 hover:text-white"
+                ? "text-legion-white border-b-2 border-legion-red"
+                : "text-legion-mist hover:text-legion-white"
             }`}
           >
             Contact
