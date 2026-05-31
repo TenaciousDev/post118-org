@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const stripe =
@@ -69,11 +70,20 @@ const programs = [
 export default function Home() {
   return (
     <>
+      {/* ── Logo band ────────────────────────────────────── */}
+      <section className="bg-legion-navy flex justify-center py-10">
+        <Image
+          src="/images/logo.png"
+          alt="American Legion Post 118"
+          width={400}
+          height={130}
+          className="w-1/4 min-w-[140px] max-w-[300px] object-contain"
+          priority
+        />
+      </section>
+
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative bg-legion-navy overflow-hidden">
-        {/* Top stripe */}
-        <div className="h-[3px] w-full" style={{ background: stripe }} />
-
         {/* Star field */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           {[
