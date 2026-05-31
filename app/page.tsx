@@ -13,27 +13,7 @@ const programs = [
     ),
     title: "O'Malley Scholarship",
     description:
-      "Awarding college scholarships to deserving Hendricks County students in honor of Post 118's legacy of service.",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-7 h-7">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
-      </svg>
-    ),
-    title: "American Legion Riders",
-    description:
-      "Our motorcycle chapter participates in honor escorts, charity rides, and veteran outreach across Indiana.",
-  },
-  {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-7 h-7">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-      </svg>
-    ),
-    title: "Sons of the American Legion",
-    description:
-      "Carrying on the mission of the Legion, the SAL squadron at Post 118 serves veterans and community alike.",
+      "We award college scholarships each year to local students in Hendricks County — investing in the next generation in honor of those who served.",
   },
   {
     icon: (
@@ -43,7 +23,7 @@ const programs = [
     ),
     title: "Friday Dinners",
     description:
-      "Weekly Friday night dinners open to members, families, and the public. Great food, great company.",
+      "Join us every Friday night for a home-cooked meal. Open to members, families, and the public — everyone is welcome at the table.",
   },
   {
     icon: (
@@ -53,7 +33,7 @@ const programs = [
     ),
     title: "Veterans Services",
     description:
-      "Connecting veterans with benefits, claims assistance, and support services they've earned through their service.",
+      "We help veterans understand their benefits and connect with the support they've earned. If you're not sure where to start, come talk to us.",
   },
   {
     icon: (
@@ -61,9 +41,9 @@ const programs = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
       </svg>
     ),
-    title: "Open Mic & Karaoke",
+    title: "Entertainment",
     description:
-      "Regular open mic nights and karaoke events keeping our post hall lively and welcoming for everyone.",
+      "From karaoke nights to live music, there's always something going on at the post. Check the calendar and come out for a good time.",
   },
 ];
 
