@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -47,17 +46,10 @@ export default function Nav() {
 
   return (
     <nav className="bg-legion-navy h-16 flex items-center px-6 gap-6 relative">
-      <Link href="/" className="flex items-center gap-3 shrink-0">
-        <Image
-          src="/images/logo.png"
-          alt="American Legion Post 118"
-          width={124}
-          height={40}
-          className="object-contain"
-        />
+      <Link href="/" className="flex items-center shrink-0">
         <div className="leading-tight">
-          <div className="text-white font-semibold text-sm">American Legion</div>
-          <div className="text-white/50 text-xs">Post 118 · Danville, IN</div>
+          <div className="text-legion-white font-semibold text-sm">American Legion</div>
+          <div className="text-legion-mist text-xs">Post 118 · Danville, IN</div>
         </div>
       </Link>
 
@@ -68,8 +60,8 @@ export default function Nav() {
             href={href}
             className={`px-3 py-1 text-sm transition-colors ${
               isActive(pathname, href)
-                ? "text-white border-b-2 border-legion-red"
-                : "text-white/70 hover:text-white"
+                ? "text-legion-white border-b-2 border-legion-red"
+                : "text-legion-mist hover:text-legion-white"
             }`}
           >
             {label}
@@ -87,8 +79,8 @@ export default function Nav() {
             onClick={() => setContactOpen((o) => !o)}
             className={`flex items-center gap-1 px-3 py-1 text-sm transition-colors ${
               isActive(pathname, "/contact")
-                ? "text-white border-b-2 border-legion-red"
-                : "text-white/70 hover:text-white"
+                ? "text-legion-white border-b-2 border-legion-red"
+                : "text-legion-mist hover:text-legion-white"
             }`}
           >
             Contact

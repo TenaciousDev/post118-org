@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const stripe =
@@ -66,14 +67,30 @@ const programs = [
   },
 ];
 
+const entities = [
+  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png", pad: "p-8" },
+  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png", pad: "p-3" },
+  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png", pad: "p-3" },
+  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png", pad: "p-8" },
+];
+
 export default function Home() {
   return (
     <>
+      {/* ── Logo band ────────────────────────────────────── */}
+      <section className="bg-legion-navy flex justify-center pt-10 pb-3">
+        <Image
+          src="/images/logo.png"
+          alt="American Legion Post 118"
+          width={600}
+          height={195}
+          className="w-1/2 min-w-[240px] max-w-[560px] object-contain"
+          priority
+        />
+      </section>
+
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative bg-legion-navy overflow-hidden">
-        {/* Top stripe */}
-        <div className="h-[3px] w-full" style={{ background: stripe }} />
-
         {/* Star field */}
         <div aria-hidden className="absolute inset-0 pointer-events-none">
           {[
@@ -89,14 +106,14 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 py-24 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 pt-4 pb-6 text-center">
           <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-4">
             Hendricks County · Danville, Indiana
           </p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-white leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl font-bold text-legion-white leading-tight mb-6">
             Serving Veterans,<br />Strengthening Community
           </h1>
-          <p className="text-legion-blue text-lg max-w-2xl mx-auto mb-10">
+          <p className="text-legion-mist text-lg max-w-2xl mx-auto mb-10">
             American Legion Post 118 has proudly served Danville and Hendricks County
             since our founding — supporting veterans, families, and neighbors through
             programs, camaraderie, and community action.
@@ -117,21 +134,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Stat badges */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {[
-              "100+ Active Members",
-              "Post 118 Est. · Danville IN",
-              "$10K+ Scholarships Awarded",
-            ].map((stat) => (
-              <div
-                key={stat}
-                className="border border-white/20 rounded-full px-5 py-2 text-white/70 text-sm"
-              >
-                {stat}
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Bottom stripe */}
@@ -139,26 +141,56 @@ export default function Home() {
       </section>
 
       {/* ── Mission strip ────────────────────────────────── */}
-      <section className="bg-legion-red py-8 px-6 text-center relative overflow-hidden">
+      <section className="bg-legion-red-dark py-8 px-6 text-center relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none opacity-10">
           {["✦", "✦", "✦", "✦", "✦"].map((s, i) => (
             <span key={i} className="absolute text-white text-xl" style={{ left: `${i * 22 + 5}%`, top: "50%", transform: "translateY(-50%)" }}>{s}</span>
           ))}
         </div>
-        <p className="relative text-white text-lg sm:text-xl italic font-medium max-w-3xl mx-auto">
-          &ldquo;For God and Country, we associate ourselves together for the following purposes: To uphold and defend the Constitution of the United States; to maintain law and order; to foster and perpetuate a one hundred percent Americanism.&rdquo;
+        <p className="relative text-legion-white text-xl sm:text-2xl italic font-bold max-w-3xl mx-auto">
+          &ldquo;For God and Country, we associate ourselves together&hellip;&rdquo;
         </p>
-        <p className="relative text-white/70 text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
+        <p className="relative text-legion-mist text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
+      </section>
+
+      {/* ── Who We Are ───────────────────────────────────── */}
+      <section className="bg-white py-20 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-legion-navy text-center mb-12">
+            Who We Are.
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {entities.map(({ href, name, logo, pad }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group relative overflow-hidden rounded transition-opacity duration-200"
+              >
+                <div className={`flex items-center justify-center ${pad} h-40`}>
+                  <Image
+                    src={logo}
+                    alt={name}
+                    width={200}
+                    height={80}
+                    className="object-contain max-h-full w-full"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <p className="text-white font-semibold text-sm leading-tight">{name}</p>
+                  <p className="text-white/80 text-xs mt-1">Learn More →</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ── Programs ─────────────────────────────────────── */}
       <section className="bg-white py-20 px-6">
         <div className="max-w-5xl mx-auto">
-          <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-2 text-center">
-            What We Do
-          </p>
           <h2 className="text-3xl font-bold text-legion-navy text-center mb-12">
-            Programs &amp; Initiatives
+            What We Do.
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -188,10 +220,10 @@ export default function Home() {
       {/* ── Membership CTA ───────────────────────────────── */}
       <section className="bg-legion-navy py-20 px-6 relative overflow-hidden">
         <div className="relative max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+          <h2 className="text-3xl font-bold text-legion-white mb-4">
             Ready to Join Post 118?
           </h2>
-          <p className="text-white/60 text-lg mb-10">
+          <p className="text-legion-mist text-lg mb-10">
             Membership is open to veterans, active duty service members, and their
             families. Join a community that honors service and gives back.
           </p>
