@@ -68,10 +68,10 @@ const programs = [
 ];
 
 const entities = [
-  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png", bg: "bg-legion-navy" },
-  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png", bg: "bg-gray-50"     },
-  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png", bg: "bg-gray-50"     },
-  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png", bg: "bg-gray-50"     },
+  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png" },
+  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png" },
+  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png" },
+  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png" },
 ];
 
 export default function Home() {
@@ -161,13 +161,13 @@ export default function Home() {
           </h2>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {entities.map(({ href, name, logo, bg }) => (
+            {entities.map(({ href, name, logo }) => (
               <Link
                 key={href}
                 href={href}
-                className="group relative overflow-hidden rounded border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+                className="group relative overflow-hidden rounded transition-opacity duration-200"
               >
-                <div className={`${bg} flex items-center justify-center p-8 h-40`}>
+                <div className="flex items-center justify-center p-8 h-40">
                   <Image
                     src={logo}
                     alt={name}
