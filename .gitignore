@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Claude Code session data
+.claude/
+
+# Source images (only built assets are used by the site)
+public/images/menu.jpg
