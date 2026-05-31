@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { imgPath } from "@/lib/asset";
 
 /* ── Types ───────────────────────────────────────────────────────── */
 
@@ -163,8 +163,8 @@ function ExpandedCard({ org, onBack }: { org: Org; onBack: () => void }) {
       <div className="bg-white rounded overflow-hidden border border-gray-200 shadow-sm">
         {/* Navy header */}
         <div className="bg-legion-navy px-6 py-5 flex items-center gap-5">
-          <div className={`relative w-28 h-16 shrink-0 rounded overflow-hidden ${org.darkBg ? "" : "bg-white p-1"}`}>
-            <Image src={org.logo} alt={org.name} fill className="object-contain" />
+          <div className={`w-28 h-16 shrink-0 rounded overflow-hidden flex items-center justify-center ${org.darkBg ? "" : "bg-white p-1"}`}>
+            <img src={imgPath(org.logo)} alt={org.name} className="object-contain max-h-full max-w-full" />
           </div>
           <div>
             <p className="text-legion-red text-xs font-semibold uppercase tracking-widest mb-0.5">
@@ -253,13 +253,8 @@ export default function MembershipCards() {
           className="text-left border-t-4 border-t-legion-navy hover:border-t-legion-red bg-white rounded-b shadow-sm hover:shadow-md transition-all group focus-visible:outline-2 focus-visible:outline-legion-blue"
         >
           {/* Logo area */}
-          <div className={`relative h-24 ${o.darkBg ? "bg-legion-navy" : "bg-gray-50"}`}>
-            <Image
-              src={o.logo}
-              alt={o.name}
-              fill
-              className="object-contain p-4"
-            />
+          <div className={`h-24 flex items-center justify-center ${o.darkBg ? "bg-legion-navy" : "bg-gray-50"}`}>
+            <img src={imgPath(o.logo)} alt={o.name} className="object-contain max-h-full max-w-full p-4" />
           </div>
 
           {/* Body */}
