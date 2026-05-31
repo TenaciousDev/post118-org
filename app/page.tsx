@@ -67,6 +67,13 @@ const programs = [
   },
 ];
 
+const entities = [
+  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png", bg: "bg-legion-navy" },
+  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png", bg: "bg-gray-50"     },
+  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png", bg: "bg-gray-50"     },
+  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png", bg: "bg-gray-50"     },
+];
+
 export default function Home() {
   return (
     <>
@@ -153,15 +160,27 @@ export default function Home() {
             Who We Are.
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="border-t-4 border-legion-navy bg-gray-50 rounded-b p-6 flex flex-col gap-3"
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {entities.map(({ href, name, logo, bg }) => (
+              <Link
+                key={href}
+                href={href}
+                className="group relative overflow-hidden rounded border border-gray-200 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
               >
-                <h3 className="font-semibold text-legion-navy text-lg">Coming Soon</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Content for this card is coming soon.</p>
-              </div>
+                <div className={`${bg} flex items-center justify-center p-8 h-40`}>
+                  <Image
+                    src={logo}
+                    alt={name}
+                    width={200}
+                    height={80}
+                    className="object-contain max-h-full w-full"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <p className="text-white font-semibold text-sm leading-tight">{name}</p>
+                  <p className="text-white/80 text-xs mt-1">Learn More →</p>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
