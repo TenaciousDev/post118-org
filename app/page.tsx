@@ -117,22 +117,6 @@ export default function Home() {
             </Link>
           </div>
 
-          {/* Stat badges */}
-          <div className="flex flex-wrap justify-center gap-6">
-            {[
-              { value: "100+", label: "Active Members" },
-              { value: "Post 118", label: "Est. · Danville IN" },
-              { value: "$10K+", label: "Scholarships Awarded" },
-            ].map(({ value, label }) => (
-              <div
-                key={label}
-                className="border border-white/20 rounded-full px-5 py-2 text-sm"
-              >
-                <span className="text-legion-white">{value}</span>{" "}
-                <span className="text-legion-mist">{label}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Bottom stripe */}
@@ -140,14 +124,14 @@ export default function Home() {
       </section>
 
       {/* ── Mission strip ────────────────────────────────── */}
-      <section className="bg-legion-red py-8 px-6 text-center relative overflow-hidden">
+      <section className="bg-legion-red-dark py-8 px-6 text-center relative overflow-hidden">
         <div aria-hidden className="absolute inset-0 pointer-events-none opacity-10">
           {["✦", "✦", "✦", "✦", "✦"].map((s, i) => (
             <span key={i} className="absolute text-white text-xl" style={{ left: `${i * 22 + 5}%`, top: "50%", transform: "translateY(-50%)" }}>{s}</span>
           ))}
         </div>
-        <p className="relative text-legion-white text-lg sm:text-xl italic font-medium max-w-3xl mx-auto">
-          &ldquo;For God and Country, we associate ourselves together for the following purposes: To uphold and defend the Constitution of the United States; to maintain law and order; to foster and perpetuate a one hundred percent Americanism.&rdquo;
+        <p className="relative text-legion-white text-xl sm:text-2xl italic font-bold max-w-3xl mx-auto">
+          &ldquo;For God and Country, we associate ourselves together&hellip;&rdquo;
         </p>
         <p className="relative text-legion-mist text-sm mt-3 tracking-wide uppercase">— The American Legion Preamble</p>
       </section>
