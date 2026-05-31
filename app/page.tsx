@@ -71,13 +71,13 @@ export default function Home() {
   return (
     <>
       {/* ── Logo band ────────────────────────────────────── */}
-      <section className="bg-legion-navy flex justify-center py-10">
+      <section className="bg-legion-navy flex justify-center pt-10 pb-3">
         <Image
           src="/images/logo.png"
           alt="American Legion Post 118"
-          width={400}
-          height={130}
-          className="w-1/4 min-w-[140px] max-w-[300px] object-contain"
+          width={600}
+          height={195}
+          className="w-1/2 min-w-[240px] max-w-[560px] object-contain"
           priority
         />
       </section>
@@ -99,7 +99,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 py-24 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 pt-4 pb-24 text-center">
           <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-4">
             Hendricks County · Danville, Indiana
           </p>

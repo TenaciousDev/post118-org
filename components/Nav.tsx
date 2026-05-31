@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -47,14 +46,7 @@ export default function Nav() {
 
   return (
     <nav className="bg-legion-navy h-16 flex items-center px-6 gap-6 relative">
-      <Link href="/" className="flex items-center gap-3 shrink-0">
-        <Image
-          src="/images/logo.png"
-          alt="American Legion Post 118"
-          width={124}
-          height={40}
-          className="object-contain"
-        />
+      <Link href="/" className="flex items-center shrink-0">
         <div className="leading-tight">
           <div className="text-legion-white font-semibold text-sm">American Legion</div>
           <div className="text-legion-mist text-xs">Post 118 · Danville, IN</div>
