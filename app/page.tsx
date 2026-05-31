@@ -99,7 +99,7 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative max-w-5xl mx-auto px-6 pt-4 pb-24 text-center">
+        <div className="relative max-w-5xl mx-auto px-6 pt-4 pb-6 text-center">
           <p className="text-legion-red text-sm font-semibold tracking-widest uppercase mb-4">
             Hendricks County · Danville, Indiana
           </p>
