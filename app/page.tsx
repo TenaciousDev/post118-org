@@ -192,6 +192,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Friday at the Post ───────────────────────────── */}
+      <section className="bg-legion-navy py-16 px-6 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-5">
+          {["★", "★", "★", "★", "★"].map((s, i) => (
+            <span key={i} className="absolute text-legion-gold text-4xl" style={{ left: `${i * 22 + 3}%`, top: "50%", transform: "translateY(-50%)" }}>{s}</span>
+          ))}
+        </div>
+        <div className="relative max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-8">
+          <div className="border-l-4 border-legion-gold pl-6 flex-1">
+            <span className="text-legion-gold text-xs font-bold uppercase tracking-widest block mb-2">Every Friday</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
+              Friday at the Post
+            </h2>
+            <p className="text-white/60 leading-relaxed max-w-xl">
+              Every Friday we&apos;re open to everyone — no membership required.
+              Come for lunch, stay for the evening. Kitchen open 11&nbsp;AM–2&nbsp;PM,
+              dinner and entertainment into the night.
+            </p>
+          </div>
+          <Link
+            href="/events"
+            className="shrink-0 bg-legion-gold text-legion-navy font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap"
+          >
+            See What&apos;s Happening Friday
+          </Link>
+        </div>
+      </section>
+
+      {/* ── Outdoors & Grounds ───────────────────────────── */}
+      <section className="bg-white py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-2xl font-bold text-legion-navy text-center mb-8">
+            More Than a Hall.
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-5">
+            {[
+              {
+                icon: "🐕",
+                title: "Dogs Welcome Outdoors",
+                desc: "Bring your leashed pup to any outdoor event. Service animals always welcome inside.",
+              },
+              {
+                icon: "🛝",
+                title: "Kids' Playground",
+                desc: "There's a playground on the grounds. Bring the kids, let them run.",
+              },
+              {
+                icon: "🌳",
+                title: "22 Acres",
+                desc: "We're not just a bar. We've got 22 acres — bike nights, outdoor events, and room to breathe.",
+              },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="flex gap-4 items-start p-5 rounded border border-gray-100 bg-gray-50">
+                <span className="text-2xl shrink-0">{icon}</span>
+                <div>
+                  <h3 className="font-semibold text-legion-navy text-sm mb-1">{title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/visit"
+              className="text-legion-blue font-semibold hover:text-legion-navy transition-colors text-sm"
+            >
+              Plan your visit →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ── Membership CTA ───────────────────────────────── */}
       <section className="bg-legion-navy py-20 px-6 relative overflow-hidden">
         <div className="relative max-w-2xl mx-auto text-center">

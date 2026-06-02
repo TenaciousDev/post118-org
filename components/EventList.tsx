@@ -7,17 +7,44 @@ import { useState } from "react";
 // Keys are "YYYY-M" where M is JS month (0-indexed: June = 5)
 const FIFTH_FRIDAYS: Record<string, { title: string; time: string; description: string }> = {};
 
-const BIKE_NIGHTS: Record<string, { band: string; time: string }> = {};
+const BIKE_NIGHTS: Record<string, { band: string; time: string }> = {
+  "2026-5": { band: "TBD", time: "6:00 PM" },
+  "2026-6": { band: "TBD", time: "6:00 PM" },
+  "2026-7": { band: "TBD", time: "6:00 PM" },
+  "2026-8": { band: "TBD", time: "6:00 PM" },
+};
 
 // month is 1-indexed in this array to match human-readable dates
 const ONE_OFF: {
   year: number; month: number; day: number;
   title: string; type: string; label: string; sub: string; time: string;
+  featured?: boolean;
 }[] = [
   {
-    year: 2026, month: 5, day: 20,
-    title: "Bingo Night", type: "bingo",
-    label: "Special Event", sub: "Open to the public", time: "Doors open 6:00 PM",
+    year: 2026, month: 7, day: 4,
+    title: "Revolutionary War Reenactors",
+    type: "featured",
+    label: "July 4th Event",
+    sub: "Outdoor · Open to the public",
+    time: "All day",
+    featured: true,
+  },
+  {
+    year: 2026, month: 8, day: 8,
+    title: "Lainey's Ride",
+    type: "featured",
+    label: "Charity Motorcycle Ride",
+    sub: "Open to the public · All riders welcome",
+    time: "Registration 9:00 AM · Kickstands up 11:00 AM",
+    featured: true,
+  },
+  {
+    year: 2026, month: 10, day: 31,
+    title: "Trunk-or-Treat",
+    type: "community",
+    label: "Fall Family Event",
+    sub: "Open to the public · Kids welcome",
+    time: "5:00 PM – 8:00 PM",
   },
 ];
 
@@ -58,7 +85,7 @@ function sameDay(a: Date, b: Date) {
 
 type Card = {
   id: string; label: string; title: string; sub: string; time: string;
-  note?: string; border: string; tbd?: boolean;
+  note?: string; border: string; tbd?: boolean; featured?: boolean;
 };
 
 type Row = { date: Date; cards: Card[]; isPast: boolean; isNextUp: boolean; };
@@ -150,7 +177,8 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
     const card: Card = {
       id: `oneoff-${ev.year}-${ev.month}-${ev.day}-${ev.type}`,
       label: ev.label, title: ev.title, sub: ev.sub, time: ev.time,
-      border: ev.type === "bingo" ? "border-l-green-500" : "border-l-legion-red",
+      featured: ev.featured,
+      border: ev.featured ? "border-l-legion-gold" : ev.type === "bingo" ? "border-l-green-500" : ev.type === "community" ? "border-l-orange-400" : "border-l-legion-red",
     };
     const existing = rows.find((r) => sameDay(r.date, evDate));
     if (existing) { existing.cards.push(card); }
@@ -176,6 +204,26 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
 /* ── Card component ──────────────────────────────────────────────── */
 
 function EventCard({ card }: { card: Card }) {
+  if (card.featured) {
+    return (
+      <div className={`flex-1 min-w-0 bg-legion-navy rounded border border-legion-gold/40 border-l-4 ${card.border} px-4 py-3`}>
+        <div className="flex items-center gap-2 mb-1">
+          <p className="text-xs font-bold uppercase tracking-widest text-legion-gold">{card.label}</p>
+          <span className="text-legion-gold text-xs">★ Featured</span>
+        </div>
+        <p className="font-semibold text-sm text-white">{card.title}</p>
+        <p className="text-white/50 text-xs mt-0.5">{card.sub}</p>
+        <div className="flex items-center gap-1.5 mt-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-legion-gold/70">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+          <span className="text-xs text-white/60">{card.time}</span>
+        </div>
+        {card.note && <p className="text-xs italic mt-1.5 text-white/50">{card.note}</p>}
+      </div>
+    );
+  }
+
   return (
     <div className={`flex-1 min-w-0 bg-white rounded border border-gray-200 border-l-4 ${card.border} px-4 py-3`}>
       <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${card.tbd ? "text-gray-300" : "text-gray-400"}`}>
