@@ -31,9 +31,9 @@ const programs = [
         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
       </svg>
     ),
-    title: "Veterans Services",
+    title: "Veterans Benefits",
     description:
-      "We help veterans understand their benefits and connect with the support they've earned. If you're not sure where to start, come talk to us.",
+      "Not sure if you qualify for VA benefits? We'll connect you with the right free local resources — no runaround, no fees. Start here.",
   },
   {
     icon: (
@@ -98,13 +98,13 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-4 mb-14">
             <Link
-              href="/membership"
+              href="/join"
               className="bg-legion-red text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity"
             >
               Become a Member
             </Link>
             <Link
-              href="/programs"
+              href="/join"
               className="border border-white/40 text-white font-semibold px-6 py-3 rounded hover:bg-white/10 transition-colors"
             >
               Explore Programs
@@ -183,7 +183,7 @@ export default function Home() {
 
           <div className="text-center mt-10">
             <Link
-              href="/programs"
+              href="/join"
               className="text-legion-blue font-semibold hover:text-legion-navy transition-colors text-sm"
             >
               View all programs →
@@ -194,29 +194,25 @@ export default function Home() {
 
       {/* ── Friday at the Post ───────────────────────────── */}
       <section className="bg-legion-navy py-16 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-5">
-          {["★", "★", "★", "★", "★"].map((s, i) => (
-            <span key={i} className="absolute text-legion-gold text-4xl" style={{ left: `${i * 22 + 3}%`, top: "50%", transform: "translateY(-50%)" }}>{s}</span>
-          ))}
-        </div>
-        <div className="relative max-w-4xl mx-auto flex flex-col sm:flex-row items-center gap-8">
-          <div className="border-l-4 border-legion-gold pl-6 flex-1">
-            <span className="text-legion-gold text-xs font-bold uppercase tracking-widest block mb-2">Every Friday</span>
+        <div className="relative max-w-4xl mx-auto">
+          <div className="border-l-4 border-legion-red pl-6 sm:pl-8">
+            <span className="text-legion-red text-xs font-bold uppercase tracking-widest block mb-2">Every Friday</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">
-              Friday at the Post
+              Friday At The Post
             </h2>
-            <p className="text-white/60 leading-relaxed max-w-xl">
-              Every Friday we&apos;re open to everyone — no membership required.
-              Come for lunch, stay for the evening. Kitchen open 11&nbsp;AM–2&nbsp;PM,
-              dinner and entertainment into the night.
+            <p className="text-white/70 leading-relaxed max-w-2xl mb-1">
+              No membership card. No uniform. No agenda.
             </p>
+            <p className="text-white/50 leading-relaxed max-w-2xl italic mb-6">
+              Just cold drinks, good people, and somewhere to land.
+            </p>
+            <Link
+              href="/events"
+              className="inline-block bg-legion-red text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity"
+            >
+              See What&apos;s On →
+            </Link>
           </div>
-          <Link
-            href="/events"
-            className="shrink-0 bg-legion-gold text-legion-navy font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity whitespace-nowrap"
-          >
-            See What&apos;s Happening Friday
-          </Link>
         </div>
       </section>
 
@@ -224,7 +220,7 @@ export default function Home() {
       <section className="bg-white py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-legion-navy text-center mb-8">
-            More Than a Hall.
+            More Than a Bar.
           </h2>
           <div className="grid sm:grid-cols-3 gap-5">
             {[
@@ -255,7 +251,7 @@ export default function Home() {
           </div>
           <div className="text-center mt-8">
             <Link
-              href="/visit"
+              href="/about"
               className="text-legion-blue font-semibold hover:text-legion-navy transition-colors text-sm"
             >
               Plan your visit →
@@ -276,7 +272,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/membership"
+              href="/join"
               className="bg-legion-red text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition-opacity"
             >
               Apply for Membership

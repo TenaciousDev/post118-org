@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-legion-blue: #1B3D6D;
-  --color-legion-red: #D72131;
-  --color-legion-navy: #1B2A4A;
-  --color-legion-navy-deep: #0a1628;
-  --color-legion-white: #F5F5F0;
-  --color-legion-mist: #D8E0EA;
-  --color-legion-red-dark: #8B0000;
-  --color-legion-gold: #C9A84C;
+  /* ── Official American Legion brand colors ─────────────────────
+     Legion Blue  #1B3D6D  PANTONE 654C  C100 M84 Y31 K17
+     Legion Red   #D72131  PANTONE 186C  C12 M100 Y91 K0
+     Source: American Legion Family Branding Guidelines, Sept. 20 2022
+  ─────────────────────────────────────────────────────────────── */
+  --color-legion-blue:      #1B3D6D;   /* official nav / structural blue */
+  --color-legion-red:       #D72131;   /* official primary CTA red        */
+
+  /* Supporting palette */
+  --color-legion-navy:      #1B2A4A;   /* deeper navy for footers / dark sections */
+  --color-legion-navy-deep: #0a1628;   /* darkest background */
+  --color-legion-white:     #F5F5F0;   /* warm off-white                  */
+  --color-legion-mist:      #D8E0EA;   /* nav muted text, subtle elements */
+  --color-legion-red-dark:  #8B0000;   /* dark red for mission strip      */
 }

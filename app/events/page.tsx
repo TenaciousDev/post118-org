@@ -8,7 +8,7 @@ export default function Events() {
   return (
     <main>
       {/* ── Page header ──────────────────────────────────── */}
-      <section className="bg-legion-navy px-6 pt-10 pb-12 relative">
+      <section className="bg-legion-blue px-6 pt-10 pb-12 relative">
         <div className="max-w-4xl mx-auto">
           <nav className="text-white/40 text-sm mb-4">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>

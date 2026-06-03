@@ -30,11 +30,11 @@ const ONE_OFF: {
     featured: true,
   },
   {
-    year: 2026, month: 8, day: 8,
-    title: "Lainey's Ride",
+    year: 2026, month: 8, day: 22,
+    title: "Lainie's Ride",
     type: "featured",
     label: "Charity Motorcycle Ride",
-    sub: "Open to the public · All riders welcome",
+    sub: "Open to the public · All riders welcome · Benefits local autism needs",
     time: "Registration 9:00 AM · Kickstands up 11:00 AM",
     featured: true,
   },
@@ -178,7 +178,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
       id: `oneoff-${ev.year}-${ev.month}-${ev.day}-${ev.type}`,
       label: ev.label, title: ev.title, sub: ev.sub, time: ev.time,
       featured: ev.featured,
-      border: ev.featured ? "border-l-legion-gold" : ev.type === "bingo" ? "border-l-green-500" : ev.type === "community" ? "border-l-orange-400" : "border-l-legion-red",
+      border: ev.featured ? "border-l-legion-red" : ev.type === "bingo" ? "border-l-green-500" : ev.type === "community" ? "border-l-orange-400" : "border-l-legion-red",
     };
     const existing = rows.find((r) => sameDay(r.date, evDate));
     if (existing) { existing.cards.push(card); }
@@ -206,15 +206,15 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
 function EventCard({ card }: { card: Card }) {
   if (card.featured) {
     return (
-      <div className={`flex-1 min-w-0 bg-legion-navy rounded border border-legion-gold/40 border-l-4 ${card.border} px-4 py-3`}>
+      <div className={`flex-1 min-w-0 bg-legion-navy rounded border border-legion-red/40 border-l-4 ${card.border} px-4 py-3`}>
         <div className="flex items-center gap-2 mb-1">
-          <p className="text-xs font-bold uppercase tracking-widest text-legion-gold">{card.label}</p>
-          <span className="text-legion-gold text-xs">★ Featured</span>
+          <p className="text-xs font-bold uppercase tracking-widest text-legion-red">{card.label}</p>
+          <span className="text-legion-red text-xs">★ Featured</span>
         </div>
         <p className="font-semibold text-sm text-white">{card.title}</p>
         <p className="text-white/50 text-xs mt-0.5">{card.sub}</p>
         <div className="flex items-center gap-1.5 mt-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-legion-gold/70">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-white/40">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg>
           <span className="text-xs text-white/60">{card.time}</span>
