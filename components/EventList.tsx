@@ -2,51 +2,17 @@
 
 import { useState } from "react";
 
-/* ── Config ─────────────────────────────────────────────────────── */
+/* ── Types ───────────────────────────────────────────────────────── */
 
-// Keys are "YYYY-M" where M is JS month (0-indexed: June = 5)
-const FIFTH_FRIDAYS: Record<string, { title: string; time: string; description: string }> = {};
+type FifthFridayEntry = { title: string; time: string; description: string; cancelled?: boolean };
+type BikeNightEntry = { band: string; time: string; cancelled?: boolean };
+type OneOffEvent = { year: number; month: number; day: number; title: string; type: string; label: string; sub: string; time: string; cancelled?: boolean };
 
-const BIKE_NIGHTS: Record<string, { band: string; time: string }> = {
-  "2026-5": { band: "TBD", time: "6:00 PM" },
-  "2026-6": { band: "TBD", time: "6:00 PM" },
-  "2026-7": { band: "TBD", time: "6:00 PM" },
-  "2026-8": { band: "TBD", time: "6:00 PM" },
+type EventListProps = {
+  fifthFridays: Record<string, FifthFridayEntry>;
+  bikeNights: Record<string, BikeNightEntry>;
+  oneOff: OneOffEvent[];
 };
-
-// month is 1-indexed in this array to match human-readable dates
-const ONE_OFF: {
-  year: number; month: number; day: number;
-  title: string; type: string; label: string; sub: string; time: string;
-  featured?: boolean;
-}[] = [
-  {
-    year: 2026, month: 7, day: 4,
-    title: "Revolutionary War Reenactors",
-    type: "featured",
-    label: "July 4th Event",
-    sub: "Outdoor · Open to the public",
-    time: "All day",
-    featured: true,
-  },
-  {
-    year: 2026, month: 8, day: 22,
-    title: "Lainie's Ride",
-    type: "featured",
-    label: "Charity Motorcycle Ride",
-    sub: "Open to the public · All riders welcome · Benefits local autism needs",
-    time: "Registration 9:00 AM · Kickstands up 11:00 AM",
-    featured: true,
-  },
-  {
-    year: 2026, month: 10, day: 31,
-    title: "Trunk-or-Treat",
-    type: "community",
-    label: "Fall Family Event",
-    sub: "Open to the public · Kids welcome",
-    time: "5:00 PM – 8:00 PM",
-  },
-];
 
 /* ── Helpers ─────────────────────────────────────────────────────── */
 
@@ -81,18 +47,25 @@ function sameDay(a: Date, b: Date) {
     a.getDate() === b.getDate();
 }
 
-/* ── Types ───────────────────────────────────────────────────────── */
+/* ── Internal Types ──────────────────────────────────────────────── */
 
 type Card = {
   id: string; label: string; title: string; sub: string; time: string;
-  note?: string; border: string; tbd?: boolean; featured?: boolean;
+  note?: string; border: string; tbd?: boolean; cancelled?: boolean;
 };
 
 type Row = { date: Date; cards: Card[]; isPast: boolean; isNextUp: boolean; };
 
 /* ── Schedule builder ────────────────────────────────────────────── */
 
-function buildSchedule(year: number, month: number, today: Date): Row[] {
+function buildSchedule(
+  year: number,
+  month: number,
+  today: Date,
+  fifthFridays: Record<string, FifthFridayEntry>,
+  bikeNights: Record<string, BikeNightEntry>,
+  oneOff: OneOffEvent[],
+): Row[] {
   const key = `${year}-${month}`;
   const rows: Row[] = [];
 
@@ -101,7 +74,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
     const cards: Card[] = [];
 
     if (week === 5) {
-      const cfg = FIFTH_FRIDAYS[key];
+      const cfg = fifthFridays[key];
       cards.push({
         id: `${key}-5`,
         label: "5th Friday",
@@ -110,6 +83,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
         time: cfg ? cfg.time : "TBD",
         border: "border-l-amber-400",
         tbd: !cfg,
+        cancelled: cfg?.cancelled,
       });
     } else {
       const dinner = DINNER_ROTATION[i];
@@ -142,7 +116,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
         });
       } else if (week === 4) {
         if (isBikeMonth(month)) {
-          const bike = BIKE_NIGHTS[key];
+          const bike = bikeNights[key];
           cards.push({
             id: `${key}-4-bike`,
             label: "Bike Night",
@@ -152,6 +126,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
             note: bike ? `Featuring: ${bike.band}` : undefined,
             border: "border-l-amber-500",
             tbd: !bike,
+            cancelled: bike?.cancelled,
           });
         } else {
           cards.push({
@@ -171,14 +146,14 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
   });
 
   // One-off events
-  ONE_OFF.forEach((ev) => {
+  oneOff.forEach((ev) => {
     if (ev.year !== year || ev.month !== month + 1) return;
     const evDate = new Date(ev.year, ev.month - 1, ev.day);
     const card: Card = {
       id: `oneoff-${ev.year}-${ev.month}-${ev.day}-${ev.type}`,
       label: ev.label, title: ev.title, sub: ev.sub, time: ev.time,
-      featured: ev.featured,
-      border: ev.featured ? "border-l-legion-red" : ev.type === "bingo" ? "border-l-green-500" : ev.type === "community" ? "border-l-orange-400" : "border-l-legion-red",
+      border: ev.type === "bingo" ? "border-l-green-500" : "border-l-legion-red",
+      cancelled: ev.cancelled,
     };
     const existing = rows.find((r) => sameDay(r.date, evDate));
     if (existing) { existing.cards.push(card); }
@@ -204,57 +179,63 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
 /* ── Card component ──────────────────────────────────────────────── */
 
 function EventCard({ card }: { card: Card }) {
-  if (card.featured) {
-    return (
-      <div className={`flex-1 min-w-0 bg-legion-navy rounded border border-legion-red/40 border-l-4 ${card.border} px-4 py-3`}>
-        <div className="flex items-center gap-2 mb-1">
-          <p className="text-xs font-bold uppercase tracking-widest text-legion-red">{card.label}</p>
-          <span className="text-legion-red text-xs">★ Featured</span>
-        </div>
-        <p className="font-semibold text-sm text-white">{card.title}</p>
-        <p className="text-white/50 text-xs mt-0.5">{card.sub}</p>
+  const isCancelled = !!card.cancelled;
+  return (
+    <div className="relative flex-1 min-w-0">
+      {/* Badge sits outside the faded card div — escapes opacity/saturate */}
+      {isCancelled && (
+        <span
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "12px",
+            background: "#c0392b",
+            color: "#fff",
+            fontSize: "0.6rem",
+            fontWeight: 800,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            padding: "2px 10px",
+            borderRadius: "99px",
+            lineHeight: 1.6,
+            whiteSpace: "nowrap",
+            zIndex: 10,
+          }}
+        >
+          CANCELLED
+        </span>
+      )}
+      <div className={`bg-white rounded border border-gray-200 border-l-4 ${card.border} px-4 py-3 ${isCancelled ? "opacity-50 saturate-0" : ""}`}>
+        <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${isCancelled ? "pr-24" : ""} ${card.tbd ? "text-gray-300" : "text-gray-400"}`}>
+          {card.label}
+        </p>
+        <p className={`font-semibold text-sm ${card.tbd ? "text-gray-300 italic" : "text-legion-navy"} ${isCancelled ? "line-through decoration-gray-400" : ""}`}>
+          {card.title}
+        </p>
+        <p className="text-gray-400 text-xs mt-0.5">{card.sub}</p>
         <div className="flex items-center gap-1.5 mt-2">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-white/40">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-gray-400">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
           </svg>
-          <span className="text-xs text-white/60">{card.time}</span>
+          <span className={`text-xs ${card.tbd ? "text-gray-300 italic" : "text-gray-500"}`}>{card.time}</span>
         </div>
-        {card.note && <p className="text-xs italic mt-1.5 text-white/50">{card.note}</p>}
+        {card.note && (
+          <p className={`text-xs italic mt-1.5 ${card.tbd ? "text-gray-300" : "text-gray-500"}`}>{card.note}</p>
+        )}
       </div>
-    );
-  }
-
-  return (
-    <div className={`flex-1 min-w-0 bg-white rounded border border-gray-200 border-l-4 ${card.border} px-4 py-3`}>
-      <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${card.tbd ? "text-gray-300" : "text-gray-400"}`}>
-        {card.label}
-      </p>
-      <p className={`font-semibold text-sm ${card.tbd ? "text-gray-300 italic" : "text-legion-navy"}`}>
-        {card.title}
-      </p>
-      <p className="text-gray-400 text-xs mt-0.5">{card.sub}</p>
-      <div className="flex items-center gap-1.5 mt-2">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-gray-400">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-        <span className={`text-xs ${card.tbd ? "text-gray-300 italic" : "text-gray-500"}`}>{card.time}</span>
-      </div>
-      {card.note && (
-        <p className={`text-xs italic mt-1.5 ${card.tbd ? "text-gray-300" : "text-gray-500"}`}>{card.note}</p>
-      )}
     </div>
   );
 }
 
 /* ── Main component ──────────────────────────────────────────────── */
 
-export default function EventList() {
+export default function EventList({ fifthFridays, bikeNights, oneOff }: EventListProps) {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
 
   const isCurrentMonth = year === today.getFullYear() && month === today.getMonth();
-  const rows = buildSchedule(year, month, today);
+  const rows = buildSchedule(year, month, today, fifthFridays, bikeNights, oneOff);
 
   function prevMonth() {
     if (isCurrentMonth) return;
