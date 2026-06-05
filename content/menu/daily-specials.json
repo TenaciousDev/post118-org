@@ -1,1 +1,7 @@
-[]
+[
+  { "day": "Monday",    "item": "Hot Ham & Cheese or Bacon Grilled Cheese",             "price": "$9.00" },
+  { "day": "Tuesday",   "item": "Meatloaf",                                              "price": "$9.00" },
+  { "day": "Wednesday", "item": "Famous Hoosier Tenderloin",   "sub": "Breaded or grilled · while supplies last", "price": "$9.00" },
+  { "day": "Thursday",  "item": "Manhattans",                                            "price": "$9.00" },
+  { "day": "Friday",    "item": "Jumbo Coney Dog",                                       "price": "$9.00" }
+]
