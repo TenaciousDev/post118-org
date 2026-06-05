@@ -1,5 +1,3 @@
-"use client";
-
 const ROTATION = [
   { name: "Fish Fry", time: "5:00 PM" },
   { name: "Chicken Fried Steak", time: "6:00 PM" },

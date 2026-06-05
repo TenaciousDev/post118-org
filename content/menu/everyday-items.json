@@ -1,0 +1,15 @@
+{
+  "left": [
+    { "item": "Cheeseburger",      "price": "$9" },
+    { "item": "Wings",             "price": "$9" },
+    { "item": "Chicken Salad",     "price": "$9" },
+    { "item": "Chicken Sandwich",  "price": "$9" },
+    { "item": "Chicken Tenders",   "price": "$9" }
+  ],
+  "right": [
+    { "item": "Fish Sandwich",  "price": "$9" },
+    { "item": "BLT",            "price": "$9" },
+    { "item": "Sloppy Joe",     "price": "$9" },
+    { "item": "Chef Salad",     "price": "$6" }
+  ]
+}
