@@ -1,1 +1,6 @@
-{"kitchenClosed":false,"closureReason":"","closedMessage":"","closureIcon":""}
+{
+  "kitchenClosed": true,
+  "closureReason": "equipment",
+  "closedMessage": "The kitchen is temporarily closed due to an equipment issue. We apologize for the inconvenience.",
+  "closureIcon": "🔧"
+}
