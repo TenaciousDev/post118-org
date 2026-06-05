@@ -4,9 +4,9 @@ import { useState } from "react";
 
 /* ── Types ───────────────────────────────────────────────────────── */
 
-type FifthFridayEntry = { title: string; time: string; description: string };
-type BikeNightEntry = { band: string; time: string };
-type OneOffEvent = { year: number; month: number; day: number; title: string; type: string; label: string; sub: string; time: string };
+type FifthFridayEntry = { title: string; time: string; description: string; cancelled?: boolean };
+type BikeNightEntry = { band: string; time: string; cancelled?: boolean };
+type OneOffEvent = { year: number; month: number; day: number; title: string; type: string; label: string; sub: string; time: string; cancelled?: boolean };
 
 type EventListProps = {
   fifthFridays: Record<string, FifthFridayEntry>;
@@ -51,7 +51,7 @@ function sameDay(a: Date, b: Date) {
 
 type Card = {
   id: string; label: string; title: string; sub: string; time: string;
-  note?: string; border: string; tbd?: boolean;
+  note?: string; border: string; tbd?: boolean; cancelled?: boolean;
 };
 
 type Row = { date: Date; cards: Card[]; isPast: boolean; isNextUp: boolean; };
@@ -83,6 +83,7 @@ function buildSchedule(
         time: cfg ? cfg.time : "TBD",
         border: "border-l-amber-400",
         tbd: !cfg,
+        cancelled: cfg?.cancelled,
       });
     } else {
       const dinner = DINNER_ROTATION[i];
@@ -125,6 +126,7 @@ function buildSchedule(
             note: bike ? `Featuring: ${bike.band}` : undefined,
             border: "border-l-amber-500",
             tbd: !bike,
+            cancelled: bike?.cancelled,
           });
         } else {
           cards.push({
@@ -151,6 +153,7 @@ function buildSchedule(
       id: `oneoff-${ev.year}-${ev.month}-${ev.day}-${ev.type}`,
       label: ev.label, title: ev.title, sub: ev.sub, time: ev.time,
       border: ev.type === "bingo" ? "border-l-green-500" : "border-l-legion-red",
+      cancelled: ev.cancelled,
     };
     const existing = rows.find((r) => sameDay(r.date, evDate));
     if (existing) { existing.cards.push(card); }
@@ -176,24 +179,50 @@ function buildSchedule(
 /* ── Card component ──────────────────────────────────────────────── */
 
 function EventCard({ card }: { card: Card }) {
+  const isCancelled = !!card.cancelled;
   return (
-    <div className={`flex-1 min-w-0 bg-white rounded border border-gray-200 border-l-4 ${card.border} px-4 py-3`}>
-      <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${card.tbd ? "text-gray-300" : "text-gray-400"}`}>
-        {card.label}
-      </p>
-      <p className={`font-semibold text-sm ${card.tbd ? "text-gray-300 italic" : "text-legion-navy"}`}>
-        {card.title}
-      </p>
-      <p className="text-gray-400 text-xs mt-0.5">{card.sub}</p>
-      <div className="flex items-center gap-1.5 mt-2">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-gray-400">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-        </svg>
-        <span className={`text-xs ${card.tbd ? "text-gray-300 italic" : "text-gray-500"}`}>{card.time}</span>
-      </div>
-      {card.note && (
-        <p className={`text-xs italic mt-1.5 ${card.tbd ? "text-gray-300" : "text-gray-500"}`}>{card.note}</p>
+    <div className="relative flex-1 min-w-0">
+      {/* Badge sits outside the faded card div — escapes opacity/saturate */}
+      {isCancelled && (
+        <span
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "12px",
+            background: "#c0392b",
+            color: "#fff",
+            fontSize: "0.6rem",
+            fontWeight: 800,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            padding: "2px 10px",
+            borderRadius: "99px",
+            lineHeight: 1.6,
+            whiteSpace: "nowrap",
+            zIndex: 10,
+          }}
+        >
+          CANCELLED
+        </span>
       )}
+      <div className={`bg-white rounded border border-gray-200 border-l-4 ${card.border} px-4 py-3 ${isCancelled ? "opacity-50 saturate-0" : ""}`}>
+        <p className={`text-xs font-semibold uppercase tracking-widest mb-1 ${isCancelled ? "pr-24" : ""} ${card.tbd ? "text-gray-300" : "text-gray-400"}`}>
+          {card.label}
+        </p>
+        <p className={`font-semibold text-sm ${card.tbd ? "text-gray-300 italic" : "text-legion-navy"} ${isCancelled ? "line-through decoration-gray-400" : ""}`}>
+          {card.title}
+        </p>
+        <p className="text-gray-400 text-xs mt-0.5">{card.sub}</p>
+        <div className="flex items-center gap-1.5 mt-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-3.5 h-3.5 shrink-0 text-gray-400">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+          </svg>
+          <span className={`text-xs ${card.tbd ? "text-gray-300 italic" : "text-gray-500"}`}>{card.time}</span>
+        </div>
+        {card.note && (
+          <p className={`text-xs italic mt-1.5 ${card.tbd ? "text-gray-300" : "text-gray-500"}`}>{card.note}</p>
+        )}
+      </div>
     </div>
   );
 }
