@@ -1,5 +1,5 @@
 {
-  "kitchenClosed": true,
+  "kitchenClosed": false,
   "closureReason": "equipment",
   "closedMessage": "The kitchen is temporarily closed due to an equipment issue. We apologize for the inconvenience.",
   "closureIcon": "🔧"
