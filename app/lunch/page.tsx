@@ -1,35 +1,24 @@
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 
 const stripe =
   "repeating-linear-gradient(90deg, #E31937 0px, #E31937 12px, #ffffff 12px, #ffffff 24px)";
 
-const KITCHEN_CLOSED = false;
-const KITCHEN_CLOSED_MESSAGE = "The kitchen is temporarily closed. Check back soon!";
+const status = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "content/menu/status.json"), "utf-8")
+) as { kitchenClosed: boolean; closureReason: string; closedMessage: string; closureIcon: string };
 
-/* ── Data ────────────────────────────────────────────────────────── */
+const DAILY_SPECIALS = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "content/menu/daily-specials.json"), "utf-8")
+) as { day: string; item: string; sub?: string; price: string }[];
 
-const DAILY_SPECIALS = [
-  { day: "Monday",    item: "Hot Ham & Cheese or Bacon Grilled Cheese",             price: "$9.00" },
-  { day: "Tuesday",   item: "Meatloaf",                                              price: "$9.00" },
-  { day: "Wednesday", item: "Famous Hoosier Tenderloin",   sub: "Breaded or grilled · while supplies last", price: "$9.00" },
-  { day: "Thursday",  item: "Manhattans",                                            price: "$9.00" },
-  { day: "Friday",    item: "Jumbo Coney Dog",                                       price: "$9.00" },
-];
+const everydayItems = JSON.parse(
+  fs.readFileSync(path.join(process.cwd(), "content/menu/everyday-items.json"), "utf-8")
+) as { left: { item: string; price: string }[]; right: { item: string; price: string }[] };
 
-const DAILY_LEFT = [
-  { item: "Cheeseburger",      price: "$9" },
-  { item: "Wings",             price: "$9" },
-  { item: "Chicken Salad",     price: "$9" },
-  { item: "Chicken Sandwich",  price: "$9" },
-  { item: "Chicken Tenders",   price: "$9" },
-];
-
-const DAILY_RIGHT = [
-  { item: "Fish Sandwich",  price: "$9" },
-  { item: "BLT",            price: "$9" },
-  { item: "Sloppy Joe",     price: "$9" },
-  { item: "Chef Salad",     price: "$6" },
-];
+const DAILY_LEFT = everydayItems.left;
+const DAILY_RIGHT = everydayItems.right;
 
 const SIDES = [
   "French Fries", "Onion Rings", "Tater Tots",
@@ -117,12 +106,12 @@ export default function Lunch() {
           </div>
 
           {/* Kitchen closed banner */}
-          {KITCHEN_CLOSED && (
+          {status.kitchenClosed && (
             <div className="mt-4 bg-legion-red/20 border border-legion-red/40 rounded px-4 py-3 text-white text-sm flex items-center gap-2">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5} className="w-4 h-4 text-legion-red shrink-0">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
               </svg>
-              {KITCHEN_CLOSED_MESSAGE}
+              {status.closedMessage}
             </div>
           )}
         </div>

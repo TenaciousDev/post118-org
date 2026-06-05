@@ -1,5 +1,5 @@
 import Link from "next/link";
-import EventList from "@/components/EventList";
+import EventListLoader from "@/components/EventListLoader";
 
 const stripe =
   "repeating-linear-gradient(90deg, #E31937 0px, #E31937 12px, #ffffff 12px, #ffffff 24px)";
@@ -27,7 +27,7 @@ export default function Events() {
       {/* ── Event list ───────────────────────────────────── */}
       <section className="bg-gray-50 py-12 px-6">
         <div className="max-w-4xl mx-auto">
-          <EventList />
+          <EventListLoader />
         </div>
       </section>
     </main>

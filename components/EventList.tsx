@@ -2,24 +2,17 @@
 
 import { useState } from "react";
 
-/* ── Config ─────────────────────────────────────────────────────── */
+/* ── Types ───────────────────────────────────────────────────────── */
 
-// Keys are "YYYY-M" where M is JS month (0-indexed: June = 5)
-const FIFTH_FRIDAYS: Record<string, { title: string; time: string; description: string }> = {};
+type FifthFridayEntry = { title: string; time: string; description: string };
+type BikeNightEntry = { band: string; time: string };
+type OneOffEvent = { year: number; month: number; day: number; title: string; type: string; label: string; sub: string; time: string };
 
-const BIKE_NIGHTS: Record<string, { band: string; time: string }> = {};
-
-// month is 1-indexed in this array to match human-readable dates
-const ONE_OFF: {
-  year: number; month: number; day: number;
-  title: string; type: string; label: string; sub: string; time: string;
-}[] = [
-  {
-    year: 2026, month: 5, day: 20,
-    title: "Bingo Night", type: "bingo",
-    label: "Special Event", sub: "Open to the public", time: "Doors open 6:00 PM",
-  },
-];
+type EventListProps = {
+  fifthFridays: Record<string, FifthFridayEntry>;
+  bikeNights: Record<string, BikeNightEntry>;
+  oneOff: OneOffEvent[];
+};
 
 /* ── Helpers ─────────────────────────────────────────────────────── */
 
@@ -54,7 +47,7 @@ function sameDay(a: Date, b: Date) {
     a.getDate() === b.getDate();
 }
 
-/* ── Types ───────────────────────────────────────────────────────── */
+/* ── Internal Types ──────────────────────────────────────────────── */
 
 type Card = {
   id: string; label: string; title: string; sub: string; time: string;
@@ -65,7 +58,14 @@ type Row = { date: Date; cards: Card[]; isPast: boolean; isNextUp: boolean; };
 
 /* ── Schedule builder ────────────────────────────────────────────── */
 
-function buildSchedule(year: number, month: number, today: Date): Row[] {
+function buildSchedule(
+  year: number,
+  month: number,
+  today: Date,
+  fifthFridays: Record<string, FifthFridayEntry>,
+  bikeNights: Record<string, BikeNightEntry>,
+  oneOff: OneOffEvent[],
+): Row[] {
   const key = `${year}-${month}`;
   const rows: Row[] = [];
 
@@ -74,7 +74,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
     const cards: Card[] = [];
 
     if (week === 5) {
-      const cfg = FIFTH_FRIDAYS[key];
+      const cfg = fifthFridays[key];
       cards.push({
         id: `${key}-5`,
         label: "5th Friday",
@@ -115,7 +115,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
         });
       } else if (week === 4) {
         if (isBikeMonth(month)) {
-          const bike = BIKE_NIGHTS[key];
+          const bike = bikeNights[key];
           cards.push({
             id: `${key}-4-bike`,
             label: "Bike Night",
@@ -144,7 +144,7 @@ function buildSchedule(year: number, month: number, today: Date): Row[] {
   });
 
   // One-off events
-  ONE_OFF.forEach((ev) => {
+  oneOff.forEach((ev) => {
     if (ev.year !== year || ev.month !== month + 1) return;
     const evDate = new Date(ev.year, ev.month - 1, ev.day);
     const card: Card = {
@@ -200,13 +200,13 @@ function EventCard({ card }: { card: Card }) {
 
 /* ── Main component ──────────────────────────────────────────────── */
 
-export default function EventList() {
+export default function EventList({ fifthFridays, bikeNights, oneOff }: EventListProps) {
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
 
   const isCurrentMonth = year === today.getFullYear() && month === today.getMonth();
-  const rows = buildSchedule(year, month, today);
+  const rows = buildSchedule(year, month, today, fifthFridays, bikeNights, oneOff);
 
   function prevMonth() {
     if (isCurrentMonth) return;
