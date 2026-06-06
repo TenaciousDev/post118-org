@@ -47,11 +47,11 @@ const programs = [
   },
 ];
 
-const entities = [
-  { href: "/tal", name: "The American Legion",          logo: "/images/logo-tal.png", pad: "p-8" },
-  { href: "/ala", name: "American Legion Auxiliary",     logo: "/images/logo-ala.png", pad: "p-3" },
-  { href: "/sal", name: "Sons of The American Legion",   logo: "/images/logo-sal.png", pad: "p-3" },
-  { href: "/alr", name: "American Legion Riders",        logo: "/images/logo-alr.png", pad: "p-8" },
+const entityTop = { href: "/tal", name: "The American Legion",        logo: "/images/logo-tal.png" };
+const entityRow = [
+  { href: "/ala", name: "American Legion Auxiliary",   logo: "/images/logo-ala.png" },
+  { href: "/sal", name: "Sons of The American Legion", logo: "/images/logo-sal.png" },
+  { href: "/alr", name: "American Legion Riders",      logo: "/images/logo-alr.png" },
 ];
 
 export default function Home() {
@@ -137,27 +137,56 @@ export default function Home() {
             Who We Are.
           </h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {entities.map(({ href, name, logo, pad }) => (
+          {/* TAL — always full-width solo row */}
+          <div className="mb-4">
+            <Link
+              href={entityTop.href}
+              className="group relative block w-full overflow-hidden rounded border border-gray-100 bg-gray-50"
+            >
+              {/* 5:2 aspect ratio suits the wide TAL wordmark */}
+              <div className="relative w-full" style={{ paddingBottom: "40%" }}>
+                <div className="absolute inset-0 flex items-center justify-center p-8">
+                  <img
+                    src={assetPath(entityTop.logo)}
+                    alt={entityTop.name}
+                    className="object-contain max-h-full max-w-full"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                  <p className="text-white font-semibold text-sm leading-tight">{entityTop.name}</p>
+                  <p className="text-white/80 text-xs mt-1">Learn More →</p>
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* ALA · SAL · ALR — three square cards, responsive grid */}
+          {/* Desktop: 3 columns | Tablet (~500–768px): 3 columns | Mobile: 1 column */}
+          <div className="grid grid-cols-1 min-[480px]:grid-cols-3 gap-4">
+            {entityRow.map(({ href, name, logo }) => (
               <Link
                 key={href}
                 href={href}
-                className="group relative overflow-hidden rounded transition-opacity duration-200"
+                className="group relative block overflow-hidden rounded border border-gray-100 bg-gray-50"
               >
-                <div className={`flex items-center justify-center ${pad} h-40`}>
-                  <img
-                    src={assetPath(logo)}
-                    alt={name}
-                    className="object-contain max-h-full w-full"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                  <p className="text-white font-semibold text-sm leading-tight">{name}</p>
-                  <p className="text-white/80 text-xs mt-1">Learn More →</p>
+                {/* 1:1 square */}
+                <div className="relative w-full" style={{ paddingBottom: "100%" }}>
+                  <div className="absolute inset-0 flex items-center justify-center p-6">
+                    <img
+                      src={assetPath(logo)}
+                      alt={name}
+                      className="object-contain max-h-full max-w-full"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <p className="text-white font-semibold text-sm leading-tight">{name}</p>
+                    <p className="text-white/80 text-xs mt-1">Learn More →</p>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
