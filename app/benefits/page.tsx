@@ -173,8 +173,8 @@ export default function Benefits() {
             {[
               { n: "20+",  l: "Conditions presumptively covered under PACT Act" },
               { n: "$0",   l: "Cost to file through your County VSO" },
-              { n: "36%",  l: "Post-9/11 veterans with a service-connected disability" },
-              { n: "2022", l: "Year the PACT Act expanded eligibility" },
+              { n: "1 in 3",  l: "Veterans living with a service-connected condition" },
+              { n: "3.5M+", l: "Veterans newly eligible under the PACT Act" },
             ].map(({ n, l }) => (
               <div key={n}
                 className="bg-white rounded border border-gray-200 p-4 text-center">
