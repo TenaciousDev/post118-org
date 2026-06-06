@@ -58,11 +58,11 @@ export default function Home() {
   return (
     <>
       {/* ── Logo band ────────────────────────────────────── */}
-      <section className="bg-legion-navy flex justify-center pt-10 pb-3">
+      <section className="bg-legion-navy flex justify-center pt-8 pb-8 px-6">
         <img
           src={assetPath("/images/logo.png")}
           alt="American Legion Post 118"
-          className="w-1/2 min-w-[240px] max-w-[560px] object-contain"
+          className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg object-contain"
         />
       </section>
 
