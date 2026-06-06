@@ -96,7 +96,7 @@ export default function Benefits() {
                     (317) 745-9239
                   </a>
                   <a
-                    href="https://www.in.gov/dva/locate-your-cvso/hendricks-county/"
+                    href="https://www.co.hendricks.in.us/department/index.php?structureid=32"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 border border-legion-blue text-legion-blue text-sm font-semibold px-4 py-2 rounded hover:bg-legion-blue hover:text-white transition-colors"
@@ -209,7 +209,7 @@ export default function Benefits() {
             {[
               {
                 label: "Hendricks County Veterans Service Office",
-                href:  "https://www.in.gov/dva/locate-your-cvso/hendricks-county/",
+                href:  "https://www.co.hendricks.in.us/department/index.php?structureid=32",
                 sub:   "Free, local, accredited — start here",
                 primary: true,
               },
