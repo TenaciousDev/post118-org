@@ -137,10 +137,11 @@ export default function Nav() {
     <header className="bg-legion-blue sticky top-0 z-40 w-full">
       <div className="max-w-7xl mx-auto h-16 flex items-center px-4 sm:px-6 gap-2 relative">
         <Link href="/" className="flex items-center shrink-0">
-          <div className="leading-tight">
-            <div className="text-white font-semibold text-sm">American Legion</div>
-            <div className="text-legion-mist text-xs">Post 118 &middot; Danville, IN</div>
-          </div>
+          <img
+            src="/images/logo.png"
+            alt="American Legion Post 118"
+            className="h-12 w-auto"
+          />
         </Link>
         <div className="hidden md:flex items-center gap-1 ml-auto">
           {NAV_LINKS.map(({ href, label }) => (
