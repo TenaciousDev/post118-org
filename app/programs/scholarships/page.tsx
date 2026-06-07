@@ -179,8 +179,8 @@ export default function Scholarships() {
                 <li className="flex gap-4 items-start">
                   <span className="text-legion-red font-bold text-lg shrink-0">✓</span>
                   <div>
-                    <p className="font-semibold text-legion-navy text-sm mb-0.5">You&apos;re pursuing higher education</p>
-                    <p className="text-gray-600 text-sm">We support outstanding students committed to their education.</p>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">You&apos;re pursuing full-time higher education</p>
+                    <p className="text-gray-600 text-sm">Enroll at an accredited college, university, or trade/vocational school. Part-time students are not eligible.</p>
                   </div>
                 </li>
               </ul>
@@ -188,7 +188,43 @@ export default function Scholarships() {
             <div className="mt-6 p-4 bg-blue-50 border border-legion-blue rounded">
               <p className="text-sm text-legion-navy font-semibold mb-2">What we&apos;re looking for:</p>
               <p className="text-sm text-gray-700 leading-relaxed">
-                Beyond the requirements above, we review applications based on Americanism, leadership, community service, volunteerism, and scholastic achievement. Tell us your story.
+                We review applications based on Americanism, leadership, community service, volunteerism, and scholastic achievement. If your parent, guardian, or grandparent served in the military, that will give your application extra consideration.
+              </p>
+            </div>
+          </div>
+
+          {/* ── What to Submit ──────────────────────────────── */}
+          <div>
+            <h2 className="text-lg font-bold text-legion-navy mb-4">What to Submit</h2>
+            <div className="bg-white rounded border border-gray-200 shadow-sm p-6">
+              <ul className="space-y-4">
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-navy font-bold text-lg shrink-0">1</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">Completed application form</p>
+                    <p className="text-gray-600 text-sm">Fill out all sections. Include details about your intended institution and field of study.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-navy font-bold text-lg shrink-0">2</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">High school transcript & GPA</p>
+                    <p className="text-gray-600 text-sm">Include class ranking if available. If reapplying: submit your college transcript instead.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-navy font-bold text-lg shrink-0">3</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">Essay</p>
+                    <p className="text-gray-600 text-sm">Showcase your achievements in Americanism, leadership, community service, and volunteerism.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="mt-6 p-4 bg-amber-50 border border-amber-300 rounded">
+              <p className="text-sm text-amber-900 font-semibold mb-2">Important: Deadline</p>
+              <p className="text-sm text-amber-800 leading-relaxed">
+                Applications must be submitted by <strong>5:00 PM on the second Sunday in April</strong>. Mail to <strong>TAL Post 118, 846 SR-39, Danville, IN 46122</strong>, or email <strong>scholarships@post118.org</strong>.
               </p>
             </div>
           </div>
