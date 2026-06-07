@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+// TODO: Replace with Claude-generated content for O'Malley Scholarship details
+
 const stripe =
   "repeating-linear-gradient(90deg, #E31937 0px, #E31937 12px, #ffffff 12px, #ffffff 24px)";
 
