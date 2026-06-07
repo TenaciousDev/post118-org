@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { assetPath } from "@/lib/assetPath";
 
 const NAV_LINKS = [
   { href: "/",         label: "Home"     },
@@ -138,7 +139,7 @@ export default function Nav() {
       <div className="max-w-7xl mx-auto h-16 flex items-center px-4 sm:px-6 gap-2 relative">
         <Link href="/" className="flex items-center shrink-0">
           <img
-            src="/images/logo.png"
+            src={assetPath("/images/logo.png")}
             alt="American Legion Post 118"
             className="h-12 w-auto"
           />
