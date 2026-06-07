@@ -150,6 +150,49 @@ export default function Scholarships() {
             </div>
           </div>
 
+          {/* ── Eligibility ──────────────────────────────── */}
+          <div>
+            <h2 className="text-lg font-bold text-legion-navy mb-4">Who Can Apply?</h2>
+            <div className="bg-white rounded border border-gray-200 shadow-sm p-6">
+              <ul className="space-y-4">
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-red font-bold text-lg shrink-0">✓</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">You&apos;re a US citizen</p>
+                    <p className="text-gray-600 text-sm">Citizenship is required for all applicants.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-red font-bold text-lg shrink-0">✓</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">You have military family ties</p>
+                    <p className="text-gray-600 text-sm">Your parent, guardian, or grandparent honorably served in the military.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-red font-bold text-lg shrink-0">✓</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">Your family member is a Post 118 member in good standing</p>
+                    <p className="text-gray-600 text-sm">They must have an active American Legion Post 118 membership.</p>
+                  </div>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <span className="text-legion-red font-bold text-lg shrink-0">✓</span>
+                  <div>
+                    <p className="font-semibold text-legion-navy text-sm mb-0.5">You&apos;re pursuing higher education</p>
+                    <p className="text-gray-600 text-sm">We support outstanding students committed to their education.</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div className="mt-6 p-4 bg-blue-50 border border-legion-blue rounded">
+              <p className="text-sm text-legion-navy font-semibold mb-2">What we&apos;re looking for:</p>
+              <p className="text-sm text-gray-700 leading-relaxed">
+                Beyond the requirements above, we review applications based on Americanism, leadership, community service, volunteerism, and scholastic achievement. Tell us your story.
+              </p>
+            </div>
+          </div>
+
           {/* ── How to Apply ─────────────────────────────── */}
           <div>
             <h2 className="text-lg font-bold text-legion-navy mb-4">How to Apply</h2>
