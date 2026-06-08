@@ -36,5 +36,10 @@
     "item": "",
     "sub": "",
     "price": ""
+  },
+  {
+    "day": "Saturday",
+    "item": "Test Special",
+    "price": "$1.00"
   }
 ]
