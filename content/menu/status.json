@@ -1,1 +1,6 @@
-{"kitchenClosed": false, "closureReason": "custom", "closedMessage": "The kitchen is temporarily closed. Check back soon!", "closureIcon": "🍽️"}
+{
+  "kitchenClosed": true,
+  "closureReason": "Test closure",
+  "closedMessage": "Kitchen is closed for testing",
+  "closureIcon": "🔒"
+}
