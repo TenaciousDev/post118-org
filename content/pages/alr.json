@@ -1,1 +1,31 @@
-{"title": "American Legion Riders", "body": "Check back soon to learn more about the American Legion Riders chapter at Post 118 and upcoming rides.", "comingSoon": true}
+{
+  "title": "American Legion Riders",
+  "subtitle": "On the road, in service",
+  "hero": "Where a love of motorcycling meets a commitment to veterans.",
+  "body": "The American Legion Riders Chapter 118 combines the camaraderie of motorcycle riding with the Legion's tradition of service. The Riders participate in honor escort missions, charity rides, Bike Nights, and community events throughout Indiana.\n\nOur members ride together for a purpose—honoring fallen veterans, supporting veterans causes, and strengthening the bonds of our Legion family. From summer Bike Nights at Post 118 to parades and community events, the Riders bring visibility and energy to the Legion's mission.\n\nIf you own a motorcycle, enjoy riding, and want to be part of something bigger, we'd love to have you join our ranks.",
+  "eligibility": {
+    "title": "Who Can Join",
+    "items": [
+      "Must be a member in good standing of The American Legion, ALA, or SAL",
+      "Own or regularly operate a motorcycle of 50cc or greater",
+      "Membership in a sponsoring organization is required before joining the Riders"
+    ]
+  },
+  "activities": {
+    "title": "What We Do",
+    "items": [
+      "Participate in honor escort missions for fallen veterans",
+      "Organize and ride in charity events for veterans causes",
+      "Host Post 118 Bike Nights each summer",
+      "Ride in parades, ceremonies, and community events"
+    ]
+  },
+  "cta": {
+    "text": "To join, stop by Post 118 or call (317) 745-4736",
+    "link": "tel:+131****4736"
+  },
+  "external": {
+    "url": "https://www.legion.org/riders",
+    "label": "Learn more at legion.org/riders"
+  }
+}

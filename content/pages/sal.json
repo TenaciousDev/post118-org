@@ -1,1 +1,31 @@
-{"title": "Sons of The American Legion", "body": "Check back soon to learn more about the Sons of The American Legion squadron at Post 118.", "comingSoon": true}
+{
+  "title": "Sons of The American Legion",
+  "subtitle": "Legacy of service",
+  "hero": "Carrying on the Legion's mission into the next generation through brotherhood and community.",
+  "body": "The Sons of The American Legion (SAL) carries the Legion's mission forward into the next generation. Squadron 118 is open to male descendants of veterans — with no age limit — and plays an active role in Post 118's programs and activities.\n\nWhether you're a young adult just starting out or retired and looking for camaraderie, the Sons of The American Legion offers brotherhood, service opportunities, and meaningful connections with other veterans' families. We support the Legion's programs, volunteer at Post 118 events and fundraisers, and foster a new generation of service-minded members.\n\nThere's no age minimum or maximum—only a commitment to service and the Legion's values.",
+  "eligibility": {
+    "title": "Who Can Join",
+    "items": [
+      "Male descendants of veterans (sons, grandsons, great-grandsons, stepsons, or adopted sons)",
+      "Ancestor served honorably during an eligible war era",
+      "No minimum or maximum age requirement"
+    ]
+  },
+  "activities": {
+    "title": "What We Do",
+    "items": [
+      "Support The American Legion's programs and mission",
+      "Volunteer at Post 118 events and fundraisers",
+      "Foster a new generation of service-minded members",
+      "Participate in youth programs and community service"
+    ]
+  },
+  "cta": {
+    "text": "To join, stop by Post 118 or call (317) 745-4736",
+    "link": "tel:+131****4736"
+  },
+  "external": {
+    "url": "https://www.legion.org/sons",
+    "label": "Learn more at legion.org/sons"
+  }
+}

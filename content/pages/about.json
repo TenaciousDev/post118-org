@@ -1,1 +1,23 @@
-{"title": "About Post 118", "body": "Check back soon to learn more about our post's history, leadership, and meeting schedule.", "comingSoon": true}
+{
+  "title": "About Post 118",
+  "hero": "Proudly serving Hendricks County veterans since 1919",
+  "body": "Post 118 is part of The American Legion, the nation's largest veterans service organization. We serve as a gathering place and resource hub for veterans in Hendricks County, supporting their transition to civilian life, advocating for their benefits, and building community connections.\n\nOur post hosts regular meetings, community events, and fundraisers that strengthen the bonds between veterans and the communities we serve. Whether you're looking for veteran services, camaraderie, or a place to give back, Post 118 welcomes you.\n\nThe American Legion was established in 1919 by World War I veterans and today represents nearly 2 million members across thousands of posts worldwide. At Post 118, we honor that legacy through service to our veterans and community.",
+  "sections": [
+    {
+      "title": "What's Here",
+      "content": "Post 118 is a full-service veterans hub offering claims assistance, event hosting, youth programs, and a welcoming community of veterans and their families. We host Bike Nights in the summer, monthly dinners, and special events throughout the year. Our facility is available for meetings and gatherings."
+    },
+    {
+      "title": "Get Involved",
+      "content": "You don't have to be a veteran to support Post 118. Veterans in any organization—The American Legion, American Legion Auxiliary, Sons of The American Legion, or American Legion Riders—can find meaningful service opportunities and brotherhood here. Stop by or call (317) 745-4736 to learn more about membership or volunteering."
+    },
+    {
+      "title": "Contact Us",
+      "content": "Questions? Reach out to contact@post118.org or call (317) 745-4736. We're here to answer questions about membership, services, events, or how to get involved."
+    }
+  ],
+  "featured": {
+    "title": "Our Organizations",
+    "description": "Post 118 is home to four interconnected veteran organizations, each with its own mission and focus. Learn more about each:"
+  }
+}

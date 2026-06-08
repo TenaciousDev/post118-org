@@ -1,1 +1,31 @@
-{"title": "The American Legion", "body": "Check back soon to learn more about the American Legion and Post 118's membership, mission, and programs.", "comingSoon": true}
+{
+  "title": "The American Legion",
+  "subtitle": "For God and Country",
+  "hero": "The nation's largest veterans service organization, right here in Hendricks County.",
+  "body": "The American Legion is the nation's largest veterans service organization, representing nearly 2 million members across thousands of posts worldwide. Post 118 has proudly served the veterans and community of Hendricks County for generations.\n\nWe advocate for veterans' benefits and legislation at all levels, provide claims assistance and veterans services, fund the O'Malley Scholarship and youth programs, and host community events, dinners, and programs right here at Post 118.\n\nWhether you're a veteran looking for support, a community member wanting to give back, or someone interested in the Legion's mission, we'd love to meet you.",
+  "eligibility": {
+    "title": "Who Can Join",
+    "items": [
+      "Served in the U.S. Armed Forces during an eligible war era",
+      "Honorably discharged, or currently serving on active duty",
+      "U.S. citizen or non-citizen who served in the U.S. military"
+    ]
+  },
+  "activities": {
+    "title": "What We Do",
+    "items": [
+      "Advocate for veterans' benefits and legislation at all levels",
+      "Provide claims assistance and veterans services",
+      "Fund the O'Malley Scholarship and youth programs",
+      "Host community events, dinners, and programs at Post 118"
+    ]
+  },
+  "cta": {
+    "text": "To join, stop by Post 118 or call (317) 745-4736",
+    "link": "tel:+13177454736"
+  },
+  "external": {
+    "url": "https://www.legion.org/membership",
+    "label": "Learn more at legion.org"
+  }
+}
